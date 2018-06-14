@@ -1,5 +1,7 @@
----------makeCMS3ClassFiles_2018---------
-Description:
+makeCMS3ClassFiles_2018
+
+### Description:
+Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2, and nJet30 histograms included.
 
 ### Download:
 
