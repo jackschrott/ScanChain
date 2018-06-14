@@ -5,9 +5,9 @@ Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2,
 
 ### Download:
 
-    git clone https://github.com/jackschrott/makeCMS3ClassFiles_2018.git
+    $ git clone https://github.com/jackschrott/makeCMS3ClassFiles_2018.git
 
-### Running:
+### Making Class Files:
 
     1.) go to makeClassFiles_2018 directory
 
