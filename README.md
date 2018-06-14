@@ -15,15 +15,16 @@ Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2,
       
     2.) Start ROOT
 
-          $ root
+          $ root -l
       
     3.) Load makeCMS3ClassFiles
 
          root[0] .L makeCMS3ClassFiles.C++
       
-    4.) Run makeCMS3ClassFiles. * indicates optional arg.
+    4.) Run makeCMS3ClassFiles. * indicates optional arg. Note: you can determine what tree is contained by running root[]           <fileName>.root->ls().
       
-         root[1] makeCMS3ClassFiles("<fileName>.root", "<tree in file>", *"<className>", *"<namespaceName>", *"<objectName>")
+         root[1] makeCMS3ClassFiles("<fileName>.root", "<tree in file>", *"<className>", *"<namespaceName>", 
+                                                                                                 *"<objectName>")
          
     5.) Exit root
         
@@ -33,7 +34,7 @@ Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2,
 
     1.) Loop over all events
     
-         $ root doAll.C
+         $ root -l doAll.C
          
     * It may take a minute or so for the plots to fully render.
     
