@@ -36,15 +36,15 @@ int ScanChain(TChain* chain, bool fast = true, int nEvents = -1, string skimFile
   TCanvas *c_1 = new TCanvas("c_1", "Plots", 200, 200, 800, 700);
   c_1->Divide(2,2);
 
-  TH1F *ht = new TH1F("ht", "ht Histogram", 100,0,3000);
-  TH1F *met_pt = new TH1F("met_pt", "met_pt Histogram", 100, 0, 2500);
-  TH1F *mt2 = new TH1F("mt2", "mt2 Histogram", 100, 0, 1500);
-  TH1F *nJet30 = new TH1F("nJet30", "nJet30 Histogram", 11, 0, 11);
+  TH1F *ht = new TH1F("ht", "ht", 100,0,3000);
+  TH1F *met_pt = new TH1F("met_pt", "met_pt", 100, 0, 2500);
+  TH1F *mt2 = new TH1F("mt2", "mt2", 100, 0, 1500);
+  TH1F *nJet30 = new TH1F("nJet30", "nJet30", 11, 0, 11);
   
-  TH1F *ht_cut = new TH1F("ht_cut", "ht Histogram", 100,0,3000);
-  TH1F *met_pt_cut = new TH1F("met_pt_cut", "met_pt Histogram", 100, 0, 2500);
-  TH1F *mt2_cut = new TH1F("mt2_cut", "mt2 Histogram", 100, 0, 1500);
-  TH1F *nJet30_cut = new TH1F("nJet30_cut", "nJet30 Histogram", 11, 0, 11);
+  TH1F *ht_cut = new TH1F("ht_cut", "ht", 100,0,3000);
+  TH1F *met_pt_cut = new TH1F("met_pt_cut", "met_pt", 100, 0, 2500);
+  TH1F *mt2_cut = new TH1F("mt2_cut", "mt2", 100, 0, 1500);
+  TH1F *nJet30_cut = new TH1F("nJet30_cut", "nJet30", 11, 0, 11);
   //ht->SetDirectory(rootdir);
 
   // Loop over events to Analyze
@@ -104,14 +104,23 @@ int ScanChain(TChain* chain, bool fast = true, int nEvents = -1, string skimFile
       }
     }   
       // Normalizing Background
-      Double_t ht_norm = (ht_cut->Integral())/(ht->Integral());
+      Double_t ht_norm = 1.0/(ht->Integral());
       ht->Scale(ht_norm);
-      Double_t met_pt_norm = (met_pt_cut->Integral())/(met_pt->Integral());
+      Double_t met_pt_norm = 1.0/(met_pt->Integral());
       met_pt->Scale(met_pt_norm);
-      Double_t mt2_norm = (mt2_cut->Integral())/(mt2->Integral());
+      Double_t mt2_norm = 1.0/(mt2->Integral());
       mt2->Scale(mt2_norm);
-      Double_t nJet30_norm = (nJet30_cut->Integral())/(nJet30->Integral());
+      Double_t nJet30_norm = 1.0/(nJet30->Integral());
       nJet30->Scale(nJet30_norm);
+
+      Double_t ht_cut_norm = 1.0/(ht_cut->Integral());
+      ht_cut->Scale(ht_cut_norm);
+      Double_t met_pt_cut_norm = 1.0/(met_pt_cut->Integral());
+      met_pt_cut->Scale(met_pt_cut_norm);
+      Double_t mt2_cut_norm = 1.0/(mt2_cut->Integral());
+      mt2_cut->Scale(mt2_cut_norm);
+      Double_t nJet30_cut_norm = 1.0/(nJet30_cut->Integral());
+      nJet30_cut->Scale(nJet30_cut_norm);
 
       // Changing appearance
       ht->SetLineColor(kBlue-7);
@@ -119,10 +128,10 @@ int ScanChain(TChain* chain, bool fast = true, int nEvents = -1, string skimFile
       mt2->SetLineColor(kBlue-7);
       nJet30->SetLineColor(kBlue-7);
 
-      ht_cut->SetFillColor(kRed-7);
-      met_pt_cut->SetFillColor(kRed-7);
-      mt2_cut->SetFillColor(kRed-7);
-      nJet30_cut->SetFillColor(kRed-7);
+      ht_cut->SetLineColor(kRed-7);
+      met_pt_cut->SetLineColor(kRed-7);
+      mt2_cut->SetLineColor(kRed-7);
+      nJet30_cut->SetLineColor(kRed-7);
   
     // Clean Up
     delete tree;
@@ -137,23 +146,23 @@ int ScanChain(TChain* chain, bool fast = true, int nEvents = -1, string skimFile
    // Setting legend
   TLegend *legend1 = new TLegend(0.68, 0.8, 0.98, 0.95);
   legend1->SetHeader("Legend","C"); // option "C" allows to center the header
-  legend1->AddEntry(ht,"Signal Plus Background", "f");
-  legend1->AddEntry(ht_cut,"Signal", "f");
+  legend1->AddEntry(ht,"Before Selection", "f");
+  legend1->AddEntry(ht_cut,"After Selection", "f");
 
   TLegend *legend2 = new TLegend(0.68, 0.8, 0.98, 0.95);
   legend2->SetHeader("Legend","C"); // option "C" allows to center the header
-  legend2->AddEntry(met_pt,"Signal Plus Background","f");
-  legend2->AddEntry(met_pt_cut,"Signal","f");
+  legend2->AddEntry(met_pt,"Before Selection","f");
+  legend2->AddEntry(met_pt_cut,"After Selection","f");
 
   TLegend *legend3 = new TLegend(0.68, 0.8, 0.98, 0.95);
   legend3->SetHeader("Legend","C"); // option "C" allows to center the header                                                                                                                                   
-  legend3->AddEntry(mt2,"Signal Plus Background","f");
-  legend3->AddEntry(mt2_cut,"Signal","f");
+  legend3->AddEntry(mt2,"Before Selection","f");
+  legend3->AddEntry(mt2_cut,"After Selection","f");
 
   TLegend *legend4 = new TLegend(0.68, 0.8, 0.98, 0.95);
   legend4->SetHeader("Legend","C"); // option "C" allows to center the header                                                                                                                                   
-  legend4->AddEntry(nJet30,"Signal Plus Background","f");
-  legend4->AddEntry(nJet30_cut,"Signal","f");
+  legend4->AddEntry(nJet30,"Before Selection","f");
+  legend4->AddEntry(nJet30_cut,"After Selection","f");
 
   // Drawing Histograms
   c_1->cd(1); // Go to panel 1
