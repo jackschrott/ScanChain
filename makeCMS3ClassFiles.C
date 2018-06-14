@@ -3,6 +3,7 @@
 // Updates: Frank Golf (UCSD)
 // Updates: Ryan Kelley (UCSD)
 // Updates: Alex George (UCSB)
+// Updates: Jack Schrott (fnal)
 /**********************
 ROOT macro to make CMS3.h and ScanChain.C files for basic analysis
 of CMS3 ntuples. Usage:
