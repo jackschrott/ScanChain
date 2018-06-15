@@ -9,31 +9,33 @@ Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2,
 
 ### Making Class Files:
 
-    #1.) go to makeClassFiles_2018 directory
+    1.) go to makeClassFiles_2018 directory
 
           $ cd makeClassFiles_2018
       
-    #2.) Start ROOT
+    2.) Start ROOT
 
           $ root -l
       
-    #3.) Load makeCMS3ClassFiles
+    3.) Load makeCMS3ClassFiles
 
          root[0] .L makeCMS3ClassFiles.C++
       
-    #4.) Run makeCMS3ClassFiles. * indicates optional arg. Note: you can determine what tree is contained by running root[] <fileName>.root->ls().
+    4.) Run makeCMS3ClassFiles. * indicates optional arg. 
+        Note: you can determine what tree is contained by running root[] <fileName>.root->ls().
       
-         root[1] makeCMS3ClassFiles("<fileName>.root", "<tree in file>", *"<className>", *"<namespaceName>", *"<objectName>")
+         root[1] makeCMS3ClassFiles("<fileName>.root", "<tree in file>", 
+         *"<className>", *"<namespaceName>", *"<objectName>")
          
-    #5.) Exit root
+    5.) Exit root
         
          root[2] .q
       
 ### Looping over Events:
 
-    #1.) Loop over all events
+    1.) Loop over all events
     
          $ root -l doAll.C
          
-    #* It may take a minute or so for the plots to fully render.
+    * It may take a minute or so for the plots to fully render.
     
