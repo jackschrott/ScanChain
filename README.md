@@ -25,7 +25,7 @@ Creates class files--for CMS3 or anything else--and looper with ht, met_pt, mt2,
         Note: you can determine what tree is contained by running root[] <fileName>.root->ls().
       
          root[1] makeCMS3ClassFiles("<fileName>.root", "<tree in file>", 
-         *"<className>", *"<namespaceName>", *"<objectName>")
+                                            *"<className>", *"<namespaceName>", *"<objectName>")
          
     5.) Exit root
         
